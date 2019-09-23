@@ -35,7 +35,9 @@ module.exports = {
       dev: !production,
       // we'll extract any component CSS out into
       // a separate file — better for performance
-      css: hot ? false : css => css.write('dist/bundle.css'),
+      ...(!hot && {
+        css: css => css.write('dist/bundle.css'),
+      })
     }),
 
     svelteHmr({ hot }),
