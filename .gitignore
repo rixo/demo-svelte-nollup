@@ -1,3 +1,7 @@
 .DS_Store
 node_modules
 /dist/
+
+# unignore the one you're using
+/package-lock.json
+/yarn.lock
