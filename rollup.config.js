@@ -3,8 +3,13 @@ const resolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
 const livereload = require('rollup-plugin-livereload')
 const { terser } = require('rollup-plugin-terser')
+const staticFiles = require('rollup-plugin-static-files')
 
-const production = !process.env.ROLLUP_WATCH
+const svelteHmr = require('./rollup-plugin-svelte-hmr')
+
+const production = process.env.NODE_ENV === 'production'
+
+const hot = !production
 
 module.exports = {
   input: 'src/main.js',
@@ -12,18 +17,28 @@ module.exports = {
     sourcemap: true,
     format: 'iife',
     name: 'app',
-    file: 'public/bundle.js',
+    dir: 'dist',
+    entryFileNames: '[name].[hash].js',
+    assetFileNames: '[name].[hash][extname]',
   },
   plugins: [
+    // NOTE needs to be before svelte(...) because we intend to overwrite
+    // public/bundle.css stub -- my guess is there is a better way to handle
+    // css, any suggestion welcome
+    production &&
+      staticFiles({
+        include: ['./public'],
+      }),
+
     svelte({
       // enable run-time checks when not in production
       dev: !production,
       // we'll extract any component CSS out into
       // a separate file — better for performance
-      // css: css => {
-      //   css.write('public/bundle.css')
-      // },
+      css: hot ? false : css => css.write('dist/bundle.css'),
     }),
+
+    svelteHmr({ hot }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
@@ -39,11 +54,18 @@ module.exports = {
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
-    // !production && livereload('public'),
+    !production && !hot && livereload('public'),
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
-    production && terser(),
+    production &&
+      terser({
+        compress: {
+          global_defs: {
+            module: false,
+          },
+        },
+      }),
   ],
   watch: {
     clearScreen: false,
