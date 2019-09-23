@@ -1,4 +1,4 @@
-# demo-svelte-nollup-hmr
+# demo-svelte-nollup
 
 Experimenting with Svelte HMR support for nollup.
 
