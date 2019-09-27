@@ -92,8 +92,8 @@ export const createProxiedComponent = (
     Object.assign(options, { target, anchor }, restoreProps(restore))
 
   const instrument = targetCmp => {
-    const createComponent = (Component, restore) => {
-      set_current_component(parentComponent)
+    const createComponent = (Component, restore, previousCmp) => {
+      set_current_component(parentComponent || previousCmp)
       const comp = new Component(options)
       restoreState(comp, restore)
       instrument(comp)
@@ -118,9 +118,10 @@ export const createProxiedComponent = (
       compileData = Component.$$hmrCompileData
       const restore = preserveState && captureState(targetCmp)
       assignOptions(target, anchor, restore)
+      const previous = cmp
       if (conservative) {
         try {
-          cmp = createComponent(Component, restore)
+          cmp = createComponent(Component, restore, previous)
           targetCmp.$destroy()
         } catch (err) {
           cmp = targetCmp
@@ -129,7 +130,7 @@ export const createProxiedComponent = (
       } else {
         cmp = null // prevents on_destroy from firing on non-final cmp instance
         targetCmp.$destroy()
-        cmp = createComponent(Component, restore)
+        cmp = createComponent(Component, restore, previous)
       }
       return cmp
     }
