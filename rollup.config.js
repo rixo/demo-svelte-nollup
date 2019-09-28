@@ -5,7 +5,7 @@ const livereload = require('rollup-plugin-livereload')
 const { terser } = require('rollup-plugin-terser')
 const staticFiles = require('rollup-plugin-static-files')
 
-const svelteHmr = require('./rollup-plugin-svelte-hmr')
+const svelteHmr = require('rollup-plugin-svelte-hmr')
 
 const production = process.env.NODE_ENV === 'production'
 
