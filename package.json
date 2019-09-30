@@ -12,7 +12,7 @@
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-svelte-hmr": "^0.0.1",
     "rollup-plugin-terser": "^4.0.4",
-    "svelte": "rixo/svelte#hmr-capture-state"
+    "svelte": "^3.12.1"
   },
   "dependencies": {
     "sirv-cli": "^0.4.4"
