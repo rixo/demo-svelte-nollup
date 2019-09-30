@@ -1254,9 +1254,9 @@ node-pre-gyp@^0.12.0:
     semver "^5.3.0"
     tar "^4"
 
-nollup@rixo/nollup#greeting-message:
-  version "0.7.4"
-  resolved "https://codeload.github.com/rixo/nollup/tar.gz/0408eabd5a8ed4058c160c5560f31fe427dd3760"
+nollup@^0.7.6:
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/nollup/-/nollup-0.7.6.tgz#b461eb4b6812e4313d208c560fd94c452e7c84c0"
   dependencies:
     chokidar "^2.0.2"
     convert-source-map "^1.5.1"
@@ -1623,12 +1623,12 @@ rollup-plugin-static-files@^0.0.1:
     fs-extra "^7.0.1"
     klaw-sync "^6.0.0"
 
-rollup-plugin-svelte-hmr@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-svelte-hmr/-/rollup-plugin-svelte-hmr-0.0.4.tgz#fc98ada482e2b2485e558e27cd6fe66f121d8f29"
+rollup-plugin-svelte-hmr@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-svelte-hmr/-/rollup-plugin-svelte-hmr-0.0.5.tgz#8832bc94e3d98436be9b5bbfd2b1d562feb9f529"
   dependencies:
     rollup-pluginutils "^2.8.2"
-    svelte-hmr "^0.0.3"
+    svelte-hmr "^0.0.5"
 
 rollup-plugin-svelte@^5.0.3:
   version "5.1.0"
@@ -1958,9 +1958,9 @@ supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte-hmr@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.0.3.tgz#ebc56143224600628597d1f0d78364be84b8a5b5"
+svelte-hmr@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.0.5.tgz#a0563e2947b7be838ea8ccf953f2717cc41fad19"
 
 svelte@^3.12.1:
   version "3.12.1"
