@@ -40,7 +40,19 @@ module.exports = {
       })
     }),
 
-    svelteHmr({ hot, hotOptions: { optimistic: false } }),
+    svelteHmr({
+      hot,
+      hotOptions: {
+        // `optimistic` will try to recover from runtime errors during component
+        // init (i.e. constructor). This kind of error can be more safely
+        // recovered from when your components are more pure. Otherwise, it can
+        // get really funky.
+        //
+        // Compile error are _always_ recovered from with Nollup.
+        //
+        optimistic: true,
+      },
+    }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
