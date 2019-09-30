@@ -40,7 +40,7 @@ module.exports = {
       })
     }),
 
-    svelteHmr({ hot }),
+    svelteHmr({ hot, hotOptions: { optimistic: false } }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
